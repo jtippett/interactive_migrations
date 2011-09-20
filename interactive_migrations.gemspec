@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
  s.name        = "interactive_migrations"
- s.version     = '0.0.1'
+ s.version     = '0.0.2'
  s.authors     = ["James Tippett"]
  s.email       = ["hi@jamestippett.com"]
 
