@@ -1,3 +1,5 @@
+require 'highline/import'
+
 namespace :db do
   namespace :migrate do
 
