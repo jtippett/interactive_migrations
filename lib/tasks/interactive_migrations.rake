@@ -5,7 +5,7 @@ namespace :db do
 
     desc "Migrate Interactively"
     task :interactive => :environment do
-      pending_migrations = ActiveRecord::Migrator.new(:up, 'db/migrate').pending_migrations
+      pending_migrations = ActiveRecord::Migrator.open(ActiveRecord::Migrator.migrations_paths).pending_migrations
 
       logger = Logger.new(Rails.root.join('log', 'migrations.log'))
 
@@ -21,7 +21,7 @@ namespace :db do
           puts '--------------------------------'
           if agree("run this migration? y/n")
             begin
-              time = Benchmark.measure { ActiveRecord::Migrator.run(:up, "db/migrate/", pending_migration.version) }
+              time = Benchmark.measure { ActiveRecord::Migrator.run(:up, ActiveRecord::Migrator.migrations_paths, pending_migration.version) }
               logger.info ('== %4d %s ' % [pending_migration.version, pending_migration.name]).ljust(100, '=') + "\n"
               logger.info File.read(file)
               logger.info ('== Migrated in %.4fs ' % time.real).ljust(100, '=') + "\n"
@@ -40,7 +40,7 @@ namespace :db do
             Rake::Task["db:schema:dump"].invoke
           end
         end
-        puts "done, with #{ActiveRecord::Migrator.new(:up, 'db/migrate').pending_migrations.size} further migrations pending"
+        puts "done, with #{ActiveRecord::Migrator.open(ActiveRecord::Migrator.migrations_paths).pending_migrations.size} further migrations pending"
       else
         puts "no migrations pending."
       end
