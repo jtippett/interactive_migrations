@@ -1,5 +1,5 @@
-require 'interactive_migrations'
-require 'rails'
+require "interactive_migrations"
+require "rails"
 module MyPlugin
   class Railtie < Rails::Railtie
     railtie_name :interactive_migrations
