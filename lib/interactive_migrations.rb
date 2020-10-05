@@ -1,3 +1,7 @@
+require "interactive_migrations/version"
+
 module InteractiveMigrations
-  require 'interactive_migrations/railtie' if defined?(Rails)
+  class Error < StandardError; end
+
+  require "interactive_migrations/railtie" if defined?(Rails)
 end
