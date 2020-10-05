@@ -7,12 +7,16 @@ Gem::Specification.new do |spec|
   spec.email = ["james.tippett@gmail.com"]
 
   spec.summary = "A rake task giving you interactive migrations in your Rails 4 project"
-  spec.description = "If your rails project has migrations, " \
-    "you are prompted to run each one, " \
-    "with a printout of the code which will be run. " \
-    "You have the option of running or skipping the migration. " \
-    "Useful for production deploys where migrations are a delicate task. " \
-    "Extracted from a large production web app."
+  spec.description = <<-DESCRIPTION
+    If your rails project has migrations,
+    you are prompted to run each one,
+    with a printout of the code which will be run.
+
+    You have the option of running or skipping the migration.
+    Useful for production deploys where migrations are a delicate task.
+    Extracted from a large production web app.
+  DESCRIPTION
+
   spec.homepage = "http://github.com/jtippett/interactive_migrations"
   spec.license = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
